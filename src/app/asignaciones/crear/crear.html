@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Registrar Asignación</h2>
+  <form id="asignacionForm">
+   
+    <!-- ID -->
+    <div class="mb-3">
+      <label for="id" class="form-label">ID</label>
+      <input type="text" class="form-control" id="id" name="id" placeholder="ID" required>
+    </div>
+
+    <!-- Voluntario ID -->
+    <div class="mb-3">
+      <label for="voluntario_id" class="form-label">Voluntario ID</label>
+      <input type="text" class="form-control" id="voluntario_id" name="voluntario_id" placeholder="Voluntario ID" required>
+    </div>
+
+    <!-- area ID -->
+    <div class="mb-3">
+      <label for="area_id" class="form-label">Area ID</label>
+      <input type="text" class="form-control" id="area_id" name="area_id" placeholder="Area ID" required>
+    </div>
+
+   <!-- fecha de asignacion -->
+   <div class="mb-3">
+     <label for="fecha_asignacion" class="form-label">Fecha de Asignación</label>
+     <input type="date" class="form-control" id="fecha_asignacion" name="fecha_asignacion" required>
+   </div>
+
+
+
+    <!-- turno -->
+    <div class="mb-3">
+      <label for="turno" class="form-label">Turno</label>
+      <select class="form-select" id="turno" name="turno" required>
+        <option value="" disabled selected>Selecciona un turno</option>
+        <option value="matutino">Matutino</option>
+        <option value="vespertino">Vespertino</option>
+      </select>
+    </div>
+
+    <!-- supervisor -->
+<div class="mb-3">
+  <label for="supervisor" class="form-label">Supervisor</label>
+  <input type="text" class="form-control" id="supervisor" name="supervisor" placeholder="Supervisor" required>
+</div>
+
+    <button type="submit" class="btn btn-primary w-100">Registrar Asignación</button>
+  </form>
+</div>
+
+<!-- Bootstrap JS (opcional si usas componentes JS) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

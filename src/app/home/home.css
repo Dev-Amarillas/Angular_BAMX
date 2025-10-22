@@ -1,0 +1,35 @@
+/* Hero / Banner */
+.hero {
+  background: url('https://www.informador.mx/__export/1684885767464/sites/elinformador/img/2023/05/23/acf632bb-4165-42ab-a268-98b25e962a49_crop1684885385244.jpg_554688468.jpg') no-repeat center center;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero h1 {
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+/* Footer */
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}

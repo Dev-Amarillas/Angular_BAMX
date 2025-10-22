@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';  //router-outlet
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,      // debe ser standalone
+  imports: [RouterModule], // necesario para <router-outlet> y routerLink
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
-export class App {
-  protected readonly title = signal('BAMX');
+export class AppComponent {
+  title = 'BAMX';
 }
