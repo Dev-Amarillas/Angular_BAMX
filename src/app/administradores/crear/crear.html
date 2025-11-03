@@ -1,62 +1,63 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Registrar Administrador</h2>
-  <form id="adminForm">
-   
-    <!-- Nombre -->
-    <div class="mb-3">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Miguel Amarillas" required>
-    </div>
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg w-75">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4">Registrar Administrador</h2>
 
-    <!-- Correo -->
-    <div class="mb-3">
-      <label for="correo" class="form-label">Correo</label>
-      <input type="email" class="form-control" id="correo" name="correo" placeholder="miguel.amarillas@bamx.org" required>
-    </div>
+      <form #form="ngForm" (ngSubmit)="crearAdministrador()">
 
-    <!-- Password -->
-    <div class="mb-3">
-      <label for="password" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" id="password" name="password" placeholder="contraseña" required>
-    </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input [(ngModel)]="administrador.nombre" type="text" id="nombre" name="nombre"
+                   placeholder="Miguel Amarillas" class="form-control" required>
+          </div>
 
-   <!-- Rol -->
-<div class="mb-3">
-  <label for="rol" class="form-label">Rol</label>
-  <select class="form-select" id="rol" name="rol" required>
-    <option value="" disabled selected>Selecciona un rol</option>
-    <option value="superAdmin">superAdmin</option>
-    <option value="admin_area">admin_area</option>
-  </select>
+          <div class="col-md-6">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input [(ngModel)]="administrador.usuario" type="text" id="usuario" name="usuario"
+                   placeholder="miguel.amarillas" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="correo" class="form-label">Correo</label>
+            <input [(ngModel)]="administrador.correo" type="email" id="correo" name="correo"
+                   placeholder="miguel.amarillas@bamx.org" class="form-control" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="contrasena" class="form-label">Contraseña</label>
+            <input [(ngModel)]="administrador.contrasena" type="password" id="contrasena" name="contrasena"
+                   placeholder="Contraseña" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="confirmar_contrasena" class="form-label">Confirmar Contraseña</label>
+            <input [(ngModel)]="confirmar_contrasena" type="password" id="confirmar_contrasena"
+                   name="confirmar_contrasena" placeholder="Confirmar Contraseña" class="form-control" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Fecha de Creación</label>
+            <input type="text" class="form-control" value="Se asignará automáticamente" disabled>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="imagen" class="form-label">Foto del Administrador</label>
+          <input type="file" id="imagen" name="imagen" (change)="onArchivoSeleccionado($event)"
+                 class="form-control" accept="image/*">
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-primary btn-lg shadow-sm">Registrar Administrador</button>
+        </div>
+
+        <p *ngIf="error" class="text-danger mt-3">{{ error }}</p>
+      </form>
+    </div>
+  </div>
 </div>
-
-
-    <!-- Teléfono -->
-    <div class="mb-3">
-      <label for="telefono" class="form-label">Teléfono</label>
-      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="3315687423" required>
-    </div>
-
-    <!-- Área Asignada -->
-<div class="mb-3">
-  <label for="area_asignada" class="form-label">Área Asignada</label>
-  <select class="form-select" id="area_asignada" name="area_asignada" required>
-    <option value="" disabled selected>Selecciona un área</option>
-    <option value="Clasificación de Alimentos">Clasificación de Alimentos</option>
-    <option value="Entrega a Comunidades">Entrega a Comunidades</option>
-  </select>
-</div>
-
-
-    <!-- Fecha de Registro -->
-    <div class="mb-3">
-      <label for="fecha_registro" class="form-label">Fecha de Registro</label>
-      <input type="datetime-local" class="form-control" id="fecha_registro" name="fecha_registro" value="2025-10-12T09:30" required>
-    </div>
-
-    <button type="submit" class="btn btn-primary w-100">Registrar Administrador</button>
-  </form>
-</div>
-
-<!-- Bootstrap JS (opcional si usas componentes JS) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

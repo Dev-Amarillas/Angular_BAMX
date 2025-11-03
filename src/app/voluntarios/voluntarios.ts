@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Listar } from './listar/listar'; // importa tu componente standalone
-import { Crear } from './crear/crear';    // importa el otro
+import { Listar } from './listar/listar'; 
+import { Crear } from './crear/crear';    
 
 @Component({
   selector: 'app-voluntarios',

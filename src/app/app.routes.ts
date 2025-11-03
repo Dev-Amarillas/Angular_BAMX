@@ -15,3 +15,4 @@ export const appRoutes: Routes = [
   { path: 'asignaciones', component: Asignaciones },
   { path: '**', redirectTo: '' } // ruta principal para rutas no encontradas
 ];
+

@@ -24,3 +24,12 @@ tbody td {
 .table-hover tbody tr:hover {
   background-color: #e9ecef;
 }
+.img-foto {
+  width: 60px;              /* 🔧 tamaño fijo */
+  height: 60px;
+  border-radius: 50%;       /* 🔵 círculo perfecto */
+  object-fit: cover;        /* 🔒 recorta la imagen al centro sin deformarla */
+  border: 2px solid #000000;   /* borde sutil */
+  display: block;           /* elimina espacios indeseados */
+  margin: 0 auto;           /* centra la imagen horizontalmente */
+}

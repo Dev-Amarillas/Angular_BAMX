@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router'; 
+import { Areas } from '../../interfaces/areas';
+import { AreasService } from '../../services/areas';
+
+
 
 @Component({
   selector: 'app-listar',
@@ -10,10 +14,28 @@ import { RouterLink } from '@angular/router';
   standalone: true
 })
 export class Listar {
-  areas = [
-    { id: '68ec2f24f915ba1810cebea5', nombre: 'Entrega a Comunidades', descripcion: 'Encargado de la logística y coordinación de actividades.', responsable: 'Brenda Aguayo' },
-    { id: '68ec2f24f915ba1810cebeb1', nombre: 'Clasificación de Alimentos', descripcion: 'Responsable de la clasificación y organización de alimentos donados.', responsable: 'Pablo Morales' },
-    { id: '68ec2f24f915ba1810cebea6', nombre: 'Atención a Beneficiarios', descripcion: 'Encargado de la atención directa a las personas beneficiarias.', responsable: 'Abraham' },
-    
-  ];
+  areas: Areas[] = [];
+  
+  constructor(private areasService: AreasService) {}
+
+  ngOnInit(): void{
+    this.cargarAreas();
+  }
+  cargarAreas(): void {
+    this.areasService.obtenerAreas().subscribe({
+      next: (registros: any) => {
+        console.log('Áreas recibidas:', registros);
+
+        if (Array.isArray(registros.datos)) {
+          this.areas = registros.datos;
+        } else {
+          this.areas = [registros.datos]; // envolvemos en arreglo
+        }},
+      error: (error: any) => {
+        console.error('Error al obtener áreas:', error);
+      }
+    });
+  }
+
 }
+

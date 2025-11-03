@@ -1,48 +1,45 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Registrar Asignación</h2>
-  <form id="asignacionForm">
+  <form id="asignacionForm" (ngSubmit)="crearAsignacion()" #asignacionForm="ngForm">
    
     <!-- ID -->
     <div class="mb-3">
       <label for="id" class="form-label">ID</label>
-      <input type="text" class="form-control" id="id" name="id" placeholder="ID" required>
+      <input type="number" class="form-control" id="id" name="id" [(ngModel)]="asignacion.id" placeholder="ID" required>
     </div>
 
     <!-- Voluntario ID -->
     <div class="mb-3">
-      <label for="voluntario_id" class="form-label">Voluntario ID</label>
-      <input type="text" class="form-control" id="voluntario_id" name="voluntario_id" placeholder="Voluntario ID" required>
+      <label for="id_voluntario" class="form-label">Voluntario ID</label>
+      <input type="number" class="form-control" id="id_voluntario" name="id_voluntario" [(ngModel)]="asignacion.id_voluntario" placeholder="Voluntario ID" required>
     </div>
 
     <!-- area ID -->
     <div class="mb-3">
-      <label for="area_id" class="form-label">Area ID</label>
-      <input type="text" class="form-control" id="area_id" name="area_id" placeholder="Area ID" required>
+      <label for="id_area" class="form-label">Area ID</label>
+      <input type="number" class="form-control" id="id_area" name="id_area" [(ngModel)]="asignacion.id_area" placeholder="Area ID" required>
     </div>
 
    <!-- fecha de asignacion -->
    <div class="mb-3">
      <label for="fecha_asignacion" class="form-label">Fecha de Asignación</label>
-     <input type="date" class="form-control" id="fecha_asignacion" name="fecha_asignacion" required>
+     <input type="date" class="form-control" id="fecha_asignacion" name="fecha_asignacion" [(ngModel)]="asignacion.fecha_asignacion" required>
    </div>
 
-
-
-    <!-- turno -->
+    <!-- Estado -->
     <div class="mb-3">
-      <label for="turno" class="form-label">Turno</label>
-      <select class="form-select" id="turno" name="turno" required>
-        <option value="" disabled selected>Selecciona un turno</option>
-        <option value="matutino">Matutino</option>
-        <option value="vespertino">Vespertino</option>
+      <label for="estado" class="form-label">Estado</label>
+      <select
+        id="estado"
+        name="estado"
+        class="form-select"
+        [(ngModel)]="asignacion.estado"
+        required
+      >
+        <option [ngValue]="true">Activo</option>
+        <option [ngValue]="false">Inactivo</option>
       </select>
     </div>
-
-    <!-- supervisor -->
-<div class="mb-3">
-  <label for="supervisor" class="form-label">Supervisor</label>
-  <input type="text" class="form-control" id="supervisor" name="supervisor" placeholder="Supervisor" required>
-</div>
 
     <button type="submit" class="btn btn-primary w-100">Registrar Asignación</button>
   </form>

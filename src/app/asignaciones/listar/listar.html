@@ -10,19 +10,17 @@
           <th>Voluntario ID</th>
           <th>Area ID</th>
           <th>Fecha de asignacion</th>
-          <th>Turno</th>
-          <th>Supervisor</th>
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
 
         <tr *ngFor="let asignacion of asignaciones">
           <td>{{ asignacion.id }}</td>
-          <td>{{ asignacion.voluntario_id }}</td>
-          <td>{{ asignacion.area_id }}</td>
+          <td>{{ asignacion.id_voluntario }}</td>
+          <td>{{ asignacion.id_area }}</td>
           <td>{{ asignacion.fecha_asignacion | date:'short' }}</td>
-          <td>{{ asignacion.turno }}</td>
-          <td>{{ asignacion.supervisor }}</td>
+          <td>{{ asignacion.estado ? 'Activo' : 'Inactivo' }}</td>
         </tr>
         
       </tbody>

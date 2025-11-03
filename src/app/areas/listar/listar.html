@@ -9,7 +9,7 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>Descripción</th>
-          <th>Responsable</th>
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +18,16 @@
           <td>{{ area.id }}</td>
           <td>{{ area.nombre }}</td>
           <td>{{ area.descripcion }}</td>
-          <td>{{ area.responsable }}</td>
+          <td>{{ area.estado }}</td>
+          <td class="text-center">
+            <!-- Ahora los botones usan routerLink -->
+            <a [routerLink]="['/areas/editar', area.id]" class="btn btn-outline-warning btn-sm me-2">
+              Editar
+            </a>
+            <a [routerLink]="['/areas/eliminar', area.id]" class="btn btn-outline-danger btn-sm">
+              Eliminar
+            </a>
+          </td>
         </tr>
         
       </tbody>

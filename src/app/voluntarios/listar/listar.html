@@ -1,34 +1,46 @@
 <div class="container mt-5">
-  <h2 class="text-center mb-4">Listado de Voluntarios</h2>
+  <h2 class="text-center mb-4 fw-bold text-dark">Listado de Voluntarios</h2>
 
   <!-- Tabla de voluntarios -->
-  <div class="table-responsive">
+  <div class="table-responsive shadow rounded">
     <table class="table table-striped table-hover align-middle">
       <thead class="table-dark">
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Correo</th>
+          <th>Nombre Completo</th>
           <th>Teléfono</th>
-          <th>Rol</th>
-          <th>Área Asignada</th>
-          <th>Horas trabajadas</th>
-          <th>Fecha de Ingreso</th>
+          <th>Dirección</th>
+          <th>Fecha de Registro</th>
+          <th>Estado</th>
+          <th>Foto</th>
+          <th class="text-center">Acciones</th>
         </tr>
       </thead>
       <tbody>
-
         <tr *ngFor="let voluntario of voluntarios">
           <td>{{ voluntario.id }}</td>
-          <td>{{ voluntario.nombre }}</td>
-          <td>{{ voluntario.correo }}</td>
+          <td>{{ voluntario.nombre }} {{ voluntario.apellido_pat }} {{ voluntario.apellido_mat }}</td>
           <td>{{ voluntario.telefono }}</td>
-          <td>{{ voluntario.rol }}</td>
-          <td>{{ voluntario.area_asignada }}</td>
-          <td>{{ voluntario.horas_trabajadas }}</td>
-          <td>{{ voluntario.fecha_ingreso }}</td>
+          <td>{{ voluntario.direccion }}</td>
+          <td>{{ voluntario.fecha_registro }}</td>
+          <td>
+            <span [class.text-success]="voluntario.estado" [class.text-danger]="!voluntario.estado">
+              {{ voluntario.estado ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
+           <td>
+            <img *ngIf="voluntario.foto" [src]="'http://localhost:3000/uploads/voluntarios' + voluntario.foto" 
+                 alt="{{ voluntario.nombre }}" class="img-foto">
+          </td>
+          <td class="text-center">
+            <a [routerLink]="['/voluntarios/editar', voluntario.id]" class="btn btn-outline-warning btn-sm me-2">
+              Editar
+            </a>
+            <a [routerLink]="['/voluntarios/eliminar', voluntario.id]" class="btn btn-outline-danger btn-sm">
+              Eliminar
+            </a>
+          </td>
         </tr>
-        
       </tbody>
     </table>
   </div>

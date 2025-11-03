@@ -9,8 +9,11 @@ h2 {
 
 table {
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 9px;
   box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
 }
 
 thead th {
@@ -23,4 +26,13 @@ tbody td {
 
 .table-hover tbody tr:hover {
   background-color: #e9ecef;
+}
+.img-foto {
+  width: 60px;              /*  tamaño fijo */
+  height: 60px;
+  border-radius: 50%;       /*  círculo perfecto */
+  object-fit: cover;        /* recorta la imagen al centro sin deformarla */
+  border: 2px solid #000000;   /* borde sutil */
+  display: block;           /* elimina espacios indeseados */
+  margin: 0 auto;           /* centra la imagen horizontalmente */
 }

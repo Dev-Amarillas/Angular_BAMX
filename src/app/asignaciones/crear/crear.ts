@@ -1,11 +1,47 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Asignaciones } from '../../interfaces/asignaciones';
+import { AsignacionesService } from '../../services/asignaciones';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-crear',
-  imports: [],
+  standalone: true,
+  imports: [FormsModule, CommonModule],
   templateUrl: './crear.html',
-  styleUrl: './crear.css'
+  styleUrls: ['./crear.css']
 })
 export class Crear {
+  asignacion: Asignaciones = {
+    id: 0,
+    id_voluntario: 0,
+    id_area: 0,
+    fecha_asignacion: new Date(),
+    estado: true
+  };
+  error = '';
 
+  constructor(
+    private asignacionesService: AsignacionesService,
+    private router: Router 
+  ) {}
+
+  crearAsignacion() {
+    this.error = '';
+
+    this.asignacionesService.crearAsignacion(this.asignacion).subscribe({
+      next: (response) => {
+        console.log('Asignación creada:', response);
+        alert('Asignación creada exitosamente✨.');
+        this.router.navigate(['/asignaciones']);
+      },
+      error: (err) => {
+        console.error('Error al crear asignación:', err);
+        this.error = 'Error al crear asignación.';
+      }
+    });
+  }
 }
