@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EliminarAdminComponent } from './eliminar';
+import { Editar } from './editar';
 
-describe('EliminarAdminComponent', () => {
-  let component: EliminarAdminComponent;
-  let fixture: ComponentFixture<EliminarAdminComponent>;
+describe('Editar', () => {
+  let component: Editar;
+  let fixture: ComponentFixture<Editar>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EliminarAdminComponent]
+      imports: [Editar]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EliminarAdminComponent);
+    fixture = TestBed.createComponent(Editar);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
