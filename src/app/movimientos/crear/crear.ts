@@ -38,7 +38,7 @@ export class Crear {
 
     this.movimientosService.crearMovimiento(movimientoEnviar).subscribe({
       next: (res) => {
-        alert('✅ Movimiento registrado exitosamente');
+        alert(' Movimiento registrado exitosamente');
         console.log('Guardado correctamente:', res);
 
         // Reiniciar formulario

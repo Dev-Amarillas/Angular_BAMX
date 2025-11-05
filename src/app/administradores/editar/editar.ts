@@ -26,9 +26,11 @@ export class EditarAdministradorComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
-      // Llamada directa al backend para obtener solo este administrador
       this.adminService.obtenerAdministradorPorId(id).subscribe(
-        data => this.admin = data,
+        (data: any) => {
+          // El backend devuelve { datos: {...} }
+          this.admin = data.datos;
+        },
         err => {
           console.error('Error al cargar administrador', err);
           alert('No se pudo cargar el administrador.');
@@ -50,14 +52,20 @@ export class EditarAdministradorComponent implements OnInit {
     formData.append('usuario', this.admin.usuario);
     formData.append('correo', this.admin.correo);
     formData.append('contrasena', this.admin.contrasena);
-    if (this.imagenFile) formData.append('imagen', this.imagenFile);
+
+    if (this.imagenFile) {
+      formData.append('imagen', this.imagenFile);
+    }
 
     this.adminService.actualizarAdministrador(this.admin.id, formData).subscribe(
-      () => {
+      (response) => {
         alert('Administrador actualizado correctamente');
         this.router.navigate(['/administradores']);
       },
-      err => console.error('Error al actualizar administrador', err)
+      err => {
+        console.error('Error al actualizar administrador', err);
+        alert('Hubo un error al actualizar el administrador.');
+      }
     );
   }
 }

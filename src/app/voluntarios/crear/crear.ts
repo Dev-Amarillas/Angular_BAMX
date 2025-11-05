@@ -61,6 +61,7 @@ export class Crear {
     // Llamada al servicio
     this.voluntariosService.guardarVoluntario(formData).subscribe({
       next: () => {
+        alert('✨ Voluntario registrado exitosamente.');
         this.router.navigate(['/voluntarios']);
       },
       error: (err) => {
