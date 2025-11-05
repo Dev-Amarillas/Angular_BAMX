@@ -62,6 +62,7 @@ export class Crear {
     // Llamada al servicio
     this.administradoresService.guardarAdministrador(formData).subscribe({
       next: () => {
+        alert('Administrador creado exitosamente✨.');
         this.router.navigate(['/administradores']);
       },
       error: (err) => {

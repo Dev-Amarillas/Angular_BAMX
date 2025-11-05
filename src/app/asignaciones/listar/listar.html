@@ -8,24 +8,36 @@
         <tr>
           <th>ID</th>
           <th>Voluntario ID</th>
-          <th>Area ID</th>
-          <th>Fecha de asignacion</th>
+          <th>Área ID</th>
+          <th>Fecha de Asignación</th>
           <th>Estado</th>
         </tr>
       </thead>
       <tbody>
-
         <tr *ngFor="let asignacion of asignaciones">
           <td>{{ asignacion.id }}</td>
-          <td>{{ asignacion.id_voluntario }}</td>
-          <td>{{ asignacion.id_area }}</td>
-          <td>{{ asignacion.fecha_asignacion | date:'short' }}</td>
-          <td>{{ asignacion.estado ? 'Activo' : 'Inactivo' }}</td>
+          <td>{{ asignacion.voluntario_id}}</td>
+          <td>{{ asignacion.area_id }}</td>
+          <td>
+            <!-- Si existe la fecha, la muestra formateada; si no, muestra un texto -->
+            {{ asignacion.fecha_asignacion ? (asignacion.fecha_asignacion | date:'short') : 'Pendiente' }}
+          </td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-success': asignacion.estado,
+                'bg-secondary': !asignacion.estado
+              }"
+            >
+              {{ asignacion.estado ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
         </tr>
-        
       </tbody>
     </table>
   </div>
 </div>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

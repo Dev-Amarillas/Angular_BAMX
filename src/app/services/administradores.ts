@@ -17,6 +17,10 @@ export class AdministradoresService {
     return this.http.get<Administradores[]>(this.apiURLAdministradores);
   }
 
+  obtenerAdministradorPorId(id: number): Observable<Administradores> {
+  return this.http.get<Administradores>(`${this.apiURLAdministradores}/${id}`);
+}
+
   // Guardar administrador con FormData (incluyendo imagen)
   guardarAdministrador(formData: FormData): Observable<Administradores> {
     return this.http.post<Administradores>(this.apiURLAdministradores, formData);

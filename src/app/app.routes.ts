@@ -9,6 +9,7 @@ import { Asignaciones } from './asignaciones/asignaciones';
 export const appRoutes: Routes = [
   { path: '', component: Home },
   { path: 'administradores', component: Administradores },
+  { path: 'administradores/editar/:id',loadComponent: () => import('./administradores/editar/editar').then(m => m.EditarAdministradorComponent)},
   { path: 'voluntarios', component: Voluntarios },
   { path: 'areas', component: Areas },
   { path: 'movimientos', component: Movimientos },

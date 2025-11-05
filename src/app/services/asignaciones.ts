@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Asignaciones} from '../interfaces/asignaciones';
+import { Asignaciones } from '../interfaces/asignaciones';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,12 +9,13 @@ import { Observable } from 'rxjs';
 export class AsignacionesService {
   private apiURLAsignaciones = 'http://localhost:3000/asignaciones';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  obtenerAsignaciones(): Observable<Asignaciones[]> {
-    return this.http.get<Asignaciones[]>(this.apiURLAsignaciones);
+  obtenerAsignaciones(): Observable<any> {
+    return this.http.get<any>(this.apiURLAsignaciones);
   }
-  crearAsignacion(asignacion: Asignaciones): Observable<Asignaciones> {
-    return this.http.post<Asignaciones>(this.apiURLAsignaciones, asignacion);
+
+  crearAsignacion(asignacion: Asignaciones): Observable<any> {
+    return this.http.post<any>(this.apiURLAsignaciones, asignacion);
   }
 }

@@ -12,43 +12,48 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./crear.css'],
 })
 export class Crear {
-  // Interfaz Movimientos ahora acepta string o Date en fecha
-  movimiento: Movimientos = {
-    id: 0,
+  movimiento: Partial<Movimientos> = {
     voluntario_id: 0,
-    tipo: '',
-    cantidad_kg: 0,
-    fecha: new Date(), // inicializamos con Date
-    descripcion: ''
+    cantidad: 0,
+    descripcion: '',
+    tipo: 'entrada',  // 🔹 Valor por defecto si el backend lo requiere
+    fecha: new Date().toISOString(), // 🔹 Fecha actual ISO
   };
 
   constructor(private movimientosService: MovimientosService) {}
 
   crearMovimiento(): void {
-    // Convertimos fecha a string ISO antes de enviar
+    // Aseguramos que los datos se envíen correctamente formateados
     const movimientoEnviar: Movimientos = {
-      ...this.movimiento,
-      fecha: this.movimiento.fecha instanceof Date 
-             ? this.movimiento.fecha.toISOString() 
-             : this.movimiento.fecha
-    };
+      voluntario_id: Number(this.movimiento.voluntario_id),
+      cantidad: Number(this.movimiento.cantidad),
+      descripcion: this.movimiento.descripcion?.trim() || 'Sin descripción',
+      tipo: this.movimiento.tipo || 'entrada',
+      fecha: this.movimiento.fecha instanceof Date
+        ? this.movimiento.fecha.toISOString()
+        : this.movimiento.fecha || new Date().toISOString()
+    } as Movimientos;
 
-    console.log('Movimiento creado para enviar:', movimientoEnviar);
+    console.log('📦 Movimiento creado para enviar:', movimientoEnviar);
 
     this.movimientosService.crearMovimiento(movimientoEnviar).subscribe({
-      next: res => {
+      next: (res) => {
+        alert('✅ Movimiento registrado exitosamente');
         console.log('Guardado correctamente:', res);
-        // Opcional: reiniciar el formulario
+
+        // Reiniciar formulario
         this.movimiento = {
-          id: 0,
           voluntario_id: 0,
-          tipo: '',
-          cantidad_kg: 0,
-          fecha: new Date(),
-          descripcion: ''
+          cantidad: 0,
+          descripcion: '',
+          tipo: 'entrada',
+          fecha: new Date().toISOString(),
         };
       },
-      error: err => console.error('Error al guardar movimiento:', err)
+      error: (err) => {
+        console.error('❌ Error al guardar movimiento:', err);
+        alert('Hubo un error al registrar el movimiento. Revisa la consola.');
+      }
     });
   }
 }

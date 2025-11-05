@@ -1,7 +1,7 @@
 export interface Asignaciones {
     id: number;
-    id_voluntario: number;
-    id_area: number;
-    fecha_asignacion: Date;
+    voluntario_id: number;
+    area_id: number;
+    fecha_asignacion?: Date; // ← ahora opcional
     estado: boolean;
 }

@@ -5,8 +5,6 @@ import { Asignaciones } from '../../interfaces/asignaciones';
 import { AsignacionesService } from '../../services/asignaciones';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-crear',
   standalone: true,
@@ -15,13 +13,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./crear.css']
 })
 export class Crear {
-  asignacion: Asignaciones = {
-    id: 0,
-    id_voluntario: 0,
-    id_area: 0,
-    fecha_asignacion: new Date(),
+  asignacion: Partial<Asignaciones> = {
+    voluntario_id: 0,
+    area_id: 0,
     estado: true
   };
+  
   error = '';
 
   constructor(
@@ -30,12 +27,13 @@ export class Crear {
   ) {}
 
   crearAsignacion() {
+    
     this.error = '';
 
-    this.asignacionesService.crearAsignacion(this.asignacion).subscribe({
+    this.asignacionesService.crearAsignacion(this.asignacion as Asignaciones).subscribe({
       next: (response) => {
         console.log('Asignación creada:', response);
-        alert('Asignación creada exitosamente✨.');
+        alert('✨ Asignación creada exitosamente.');
         this.router.navigate(['/asignaciones']);
       },
       error: (err) => {

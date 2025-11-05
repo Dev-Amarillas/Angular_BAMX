@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold text-dark">Editar Administrador</h2>
+
+  <div class="card shadow-lg p-4 w-50 mx-auto">
+    <form *ngIf="admin" (ngSubmit)="guardarCambios()" #form="ngForm">
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" id="nombre" class="form-control" [(ngModel)]="admin.nombre" name="nombre" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="usuario" class="form-label">Usuario</label>
+        <input type="text" id="usuario" class="form-control" [(ngModel)]="admin.usuario" name="usuario" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="correo" class="form-label">Correo</label>
+        <input type="email" id="correo" class="form-control" [(ngModel)]="admin.correo" name="correo" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="contrasena" class="form-label">Contraseña</label>
+        <input type="password" id="contrasena" class="form-control" [(ngModel)]="admin.contrasena" name="contrasena" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="imagen" class="form-label">Imagen</label>
+        <input type="file" id="imagen" class="form-control" (change)="seleccionarImagen($event)">
+        <div *ngIf="admin.imagen" class="mt-2 text-center">
+          <img [src]="'http://localhost:3000/uploads/' + admin.imagen" alt="{{ admin.nombre }}" class="img-foto-edit">
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-success me-2" [disabled]="form.invalid">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" (click)="router.navigate(['/administradores'])">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

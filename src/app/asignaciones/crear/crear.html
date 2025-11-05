@@ -1,41 +1,32 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Registrar Asignación</h2>
-  <form id="asignacionForm" (ngSubmit)="crearAsignacion()" #asignacionForm="ngForm">
-   
-    <!-- ID -->
-    <div class="mb-3">
-      <label for="id" class="form-label">ID</label>
-      <input type="number" class="form-control" id="id" name="id" [(ngModel)]="asignacion.id" placeholder="ID" required>
-    </div>
+
+  <form (ngSubmit)="crearAsignacion()" #asignacionForm="ngForm">
 
     <!-- Voluntario ID -->
     <div class="mb-3">
-      <label for="id_voluntario" class="form-label">Voluntario ID</label>
-      <input type="number" class="form-control" id="id_voluntario" name="id_voluntario" [(ngModel)]="asignacion.id_voluntario" placeholder="Voluntario ID" required>
+      <label for="voluntario_id" class="form-label">Voluntario ID</label>
+      <input type="number" class="form-control" id="voluntario_id" name="voluntario_id"
+             [(ngModel)]="asignacion.voluntario_id" required>
     </div>
 
-    <!-- area ID -->
+    <!-- Área ID -->
     <div class="mb-3">
-      <label for="id_area" class="form-label">Area ID</label>
-      <input type="number" class="form-control" id="id_area" name="id_area" [(ngModel)]="asignacion.id_area" placeholder="Area ID" required>
+      <label for="area_id" class="form-label">Área ID</label>
+      <input type="number" class="form-control" id="area_id" name="area_id"
+             [(ngModel)]="asignacion.area_id" required>
     </div>
 
-   <!-- fecha de asignacion -->
-   <div class="mb-3">
-     <label for="fecha_asignacion" class="form-label">Fecha de Asignación</label>
-     <input type="date" class="form-control" id="fecha_asignacion" name="fecha_asignacion" [(ngModel)]="asignacion.fecha_asignacion" required>
-   </div>
+    <!-- Fecha (automática) -->
+    <div class="mb-3">
+      <label class="form-label">Fecha de Asignación</label>
+      <input type="text" class="form-control" value="Se asignará automáticamente" disabled>
+    </div>
 
     <!-- Estado -->
     <div class="mb-3">
       <label for="estado" class="form-label">Estado</label>
-      <select
-        id="estado"
-        name="estado"
-        class="form-select"
-        [(ngModel)]="asignacion.estado"
-        required
-      >
+      <select id="estado" name="estado" class="form-select" [(ngModel)]="asignacion.estado" required>
         <option [ngValue]="true">Activo</option>
         <option [ngValue]="false">Inactivo</option>
       </select>
@@ -44,6 +35,3 @@
     <button type="submit" class="btn btn-primary w-100">Registrar Asignación</button>
   </form>
 </div>
-
-<!-- Bootstrap JS (opcional si usas componentes JS) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,90 +1,53 @@
 <div class="container mt-5">
-  <h2 class="text-center mb-4">Registrar movimiento</h2>
-  <form id="MovimientoForm" (ngSubmit)="crearMovimiento()" #movimientoForm="ngForm">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center mb-4">Registrar Movimiento</h2>
 
-    <!-- ID -->
-    <div class="mb-3">
-      <label for="id" class="form-label">ID</label>
-      <input
-        type="number"
-        class="form-control"
-        id="id"
-        name="id"
-        [(ngModel)]="movimiento.id"
-        placeholder="ID del movimiento"
-        required
-      />
-    </div>
+    <form id="MovimientoForm" (ngSubmit)="crearMovimiento()" #movimientoForm="ngForm">
+      <!-- Voluntario ID -->
+      <div class="mb-3">
+        <label for="voluntario_id" class="form-label">ID del Voluntario</label>
+        <input
+          type="number"
+          class="form-control"
+          id="voluntario_id"
+          name="voluntario_id"
+          [(ngModel)]="movimiento.voluntario_id"
+          placeholder="Ejemplo: 12"
+          required
+        />
+      </div>
 
-    <!-- Voluntario_id -->
-    <div class="mb-3">
-      <label for="voluntario_id" class="form-label">Voluntario ID</label>
-      <input
-        type="number"
-        class="form-control"
-        id="voluntario_id"
-        name="voluntario_id"
-        [(ngModel)]="movimiento.voluntario_id"
-        placeholder="ID del voluntario"
-        required
-      />
-    </div>
+      <!-- Cantidad KG -->
+      <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad (KG)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="cantidad"
+          name="cantidad"
+          [(ngModel)]="movimiento.cantidad"
+          placeholder="Ejemplo: 150"
+          required
+        />
+      </div>
 
-    <!-- Tipo --> 
-    <div class="mb-3">
-      <label for="tipo" class="form-label">Tipo</label>
-      <input
-        type="text"
-        class="form-control"
-        id="tipo"
-        name="tipo"
-        [(ngModel)]="movimiento.tipo"
-        placeholder="Tipo de movimiento"
-        required
-      />
-    </div>
+      <!-- Descripción -->
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción del movimiento</label>
+        <textarea
+          id="descripcion"
+          name="descripcion"
+          class="form-control"
+          rows="3"
+          placeholder="Escribe una breve descripción del movimiento..."
+          [(ngModel)]="movimiento.descripcion"
+          required
+        ></textarea>
+      </div>
 
-    <!-- Cantidad_KG -->
-    <div class="mb-3">
-      <label for="cantidad_kg" class="form-label">Cantidad (KG)</label>
-      <input
-        type="number"
-        class="form-control"
-        id="cantidad_kg"
-        name="cantidad_kg"
-        [(ngModel)]="movimiento.cantidad_kg"
-        placeholder="Cantidad en KG"
-        required
-      />
-    </div>
-
-    <!-- Fecha del movimiento -->
-    <div class="mb-3">
-      <label for="fecha" class="form-label">Fecha del movimiento</label>
-      <input
-        type="date"
-        class="form-control"
-        id="fecha"
-        name="fecha"
-        [(ngModel)]="movimiento.fecha"
-        required
-      />
-    </div>
-
-    <!-- Descripción -->
-    <div class="mb-3">
-      <label for="descripcion" class="form-label">Descripción</label>
-      <textarea
-        id="descripcion"
-        name="descripcion"
-        class="form-control"
-        rows="3"
-        placeholder="Descripción del movimiento"
-        [(ngModel)]="movimiento.descripcion"
-        required
-      ></textarea>
-    </div>
-
-    <button type="submit" class="btn btn-primary w-100">Registrar Movimiento</button>
-  </form>
+      <button type="submit" class="btn btn-success w-100">
+        <i class="bi bi-box-arrow-in-down"></i> Registrar Movimiento
+      </button>
+    </form>
+  </div>
 </div>

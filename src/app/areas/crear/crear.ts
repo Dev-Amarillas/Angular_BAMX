@@ -20,14 +20,14 @@ export class Crear {
   estado: true,
 };
 
-error = '';
+error: string = '';
 
 
 constructor(
   private areasService: AreasService,
   private router: Router 
 ) {}
-crearArea() {
+crearArea(): void {
    this.error = '';
 
     this.areasService.crearArea(this.area).subscribe({
