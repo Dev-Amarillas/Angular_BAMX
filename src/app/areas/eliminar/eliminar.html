@@ -1,1 +1,25 @@
-<p>eliminar works!</p>
+<div class="container mt-5 text-center">
+  <h2 class="text-danger fw-bold mb-4">Eliminar Área</h2>
+
+  <div class="card shadow p-4 mx-auto" style="max-width: 450px;">
+    <ng-container *ngIf="area; else cargando">
+      <p class="fs-5 mb-4">
+        ¿Seguro que deseas eliminar el área
+        <span class="fw-bold text-dark">{{ area.nombre }}</span>?
+      </p>
+
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-danger px-4" (click)="eliminarArea()">
+          Sí, eliminar
+        </button>
+        <button class="btn btn-secondary px-4" (click)="cancelar()">
+          Cancelar
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #cargando>
+      <p class="text-muted">Cargando información...</p>
+    </ng-template>
+  </div>
+</div>

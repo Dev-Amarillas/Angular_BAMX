@@ -8,11 +8,16 @@ import { Areas } from './areas/areas';
 import { Movimientos } from './movimientos/movimientos';
 import { Asignaciones } from './asignaciones/asignaciones';
 
-// === Componentes secundarios (acciones REST) ===
+// === ADMINISTRADORES ===
 import { EditarAdministradorComponent } from './administradores/editar/editar';
 import { EliminarAdminComponent } from './administradores/eliminar/eliminar';
+// === ÁREAS ===
+import { Editar as EditarArea } from './areas/editar/editar';
+import { EliminarAreaComponent } from './areas/eliminar/eliminar';
+// === ASIGNACIONES ===
+import { EditarAsignacionComponent } from './asignaciones/editar/editar';
+import { EliminarAsignacionComponent } from './asignaciones/eliminar/eliminar';
 
-// === Rutas RESTful ===
 export const appRoutes: Routes = [
   // Página principal
   { path: '', component: Home },
@@ -27,12 +32,16 @@ export const appRoutes: Routes = [
 
   // --- ÁREAS ---
   { path: 'areas', component: Areas },
+  { path: 'areas/editar/:id', component: EditarArea },
+  { path: 'areas/eliminar/:id', component: EliminarAreaComponent },
 
   // --- MOVIMIENTOS ---
   { path: 'movimientos', component: Movimientos },
-
+  
   // --- ASIGNACIONES ---
   { path: 'asignaciones', component: Asignaciones },
+  { path: 'asignaciones/editar/:id', component: EditarAsignacionComponent },
+  { path: 'asignaciones/eliminar/:id', component: EliminarAsignacionComponent },
 
   // --- RUTA POR DEFECTO ---
   { path: '**', redirectTo: '', pathMatch: 'full' }

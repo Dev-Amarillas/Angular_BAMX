@@ -1,1 +1,82 @@
-<p>editar works!</p>
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold text-dark">Editar Asignación</h2>
+
+  <div class="card shadow-lg p-4 mx-auto" style="max-width: 600px;">
+    <form *ngIf="asignacion" (ngSubmit)="guardarCambios()" #form="ngForm">
+      
+      <!-- Voluntario -->
+      <div class="mb-3">
+        <label for="voluntario_id" class="form-label fw-semibold">Voluntario</label>
+        <select
+          id="voluntario_id"
+          class="form-select"
+          [(ngModel)]="asignacion.voluntario_id"
+          name="voluntario_id"
+          required
+        >
+          <option *ngFor="let v of voluntarios" [value]="v.id">
+            {{ v.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Área -->
+      <div class="mb-3">
+        <label for="area_id" class="form-label fw-semibold">Área</label>
+        <select
+          id="area_id"
+          class="form-select"
+          [(ngModel)]="asignacion.area_id"
+          name="area_id"
+          required
+        >
+          <option *ngFor="let a of areas" [value]="a.id">
+            {{ a.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Estado -->
+      <div class="mb-3">
+        <label for="estado" class="form-label fw-semibold">Estado</label>
+        <select
+          id="estado"
+          class="form-select"
+          [(ngModel)]="asignacion.estado"
+          name="estado"
+          required
+        >
+          <option [ngValue]="true">Activo</option>
+          <option [ngValue]="false">Inactivo</option>
+        </select>
+      </div>
+
+      <!-- Botones -->
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button type="submit" class="btn btn-success px-4" [disabled]="form.invalid">
+          Guardar Cambios
+        </button>
+        <button type="button" class="btn btn-secondary px-4" (click)="cancelar()">
+          Cancelar
+        </button>
+      </div>
+
+      <!-- Mensajes -->
+      <div
+        *ngIf="mensaje"
+        class="alert alert-success mt-4 text-center fade show"
+        role="alert"
+      >
+        {{ mensaje }}
+      </div>
+
+      <div
+        *ngIf="error"
+        class="alert alert-danger mt-4 text-center fade show"
+        role="alert"
+      >
+        {{ error }}
+      </div>
+    </form>
+  </div>
+</div>

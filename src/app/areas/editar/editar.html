@@ -1,1 +1,81 @@
-<p>editar works!</p>
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold text-dark">Editar Área</h2>
+
+  <form *ngIf="area" (ngSubmit)="guardarCambios()" #form="ngForm">
+
+    <!-- Nombre (Select) -->
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <select
+        id="nombre"
+        name="nombre"
+        class="form-select"
+        [(ngModel)]="area.nombre"
+        required
+      >
+        <option value="" disabled>Seleccione un área</option>
+        <option value="Alimentos">Alimentos</option>
+        <option value="Ropa">Ropa</option>
+        <option value="Salud">Salud</option>
+        <option value="Educación">Educación</option>
+        <option value="Recolección">Recolección</option>
+        <option value="Comunicación">Comunicación</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Gestión">Gestión</option>
+      </select>
+    </div>
+
+    <!-- Descripción -->
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        class="form-control"
+        rows="3"
+        placeholder="Describe brevemente el área"
+        [(ngModel)]="area.descripcion"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Estado -->
+    <div class="mb-3">
+      <label for="estado" class="form-label">Estado</label>
+      <select
+        id="estado"
+        name="estado"
+        class="form-select"
+        [(ngModel)]="area.estado"
+        required
+      >
+        <option [ngValue]="true">Activo</option>
+        <option [ngValue]="false">Inactivo</option>
+      </select>
+    </div>
+
+    <!-- Botones -->
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn btn-success me-2"
+        [disabled]="form.invalid"
+      >
+        Guardar Cambios
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="router.navigate(['/areas'])"
+      >
+        Cancelar
+      </button>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="error" class="alert alert-danger mt-3 text-center">
+      {{ error }}
+    </div>
+
+  </form>
+</div>

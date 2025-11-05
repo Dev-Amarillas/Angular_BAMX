@@ -11,11 +11,28 @@ export class AsignacionesService {
 
   constructor(private http: HttpClient) {}
 
-  obtenerAsignaciones(): Observable<any> {
-    return this.http.get<any>(this.apiURLAsignaciones);
+  // === OBTENER TODAS LAS ASIGNACIONES ===
+  obtenerAsignaciones(): Observable<Asignaciones[]> {
+    return this.http.get<Asignaciones[]>(this.apiURLAsignaciones);
   }
 
-  crearAsignacion(asignacion: Asignaciones): Observable<any> {
-    return this.http.post<any>(this.apiURLAsignaciones, asignacion);
+  // === OBTENER ASIGNACIÓN POR ID ===
+  obtenerAsignacionPorId(id: number): Observable<Asignaciones> {
+    return this.http.get<Asignaciones>(`${this.apiURLAsignaciones}/${id}`);
+  }
+
+  // === CREAR ASIGNACIÓN ===
+  crearAsignacion(asignacion: Asignaciones): Observable<Asignaciones> {
+    return this.http.post<Asignaciones>(this.apiURLAsignaciones, asignacion);
+  }
+
+  // === ACTUALIZAR ASIGNACIÓN ===
+  actualizarAsignacion(id: number, asignacion: Asignaciones): Observable<Asignaciones> {
+    return this.http.put<Asignaciones>(`${this.apiURLAsignaciones}/${id}`, asignacion);
+  }
+
+  // === ELIMINAR ASIGNACIÓN ===
+  eliminarAsignacion(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiURLAsignaciones}/${id}`);
   }
 }
