@@ -26,10 +26,10 @@ export class AsignacionesService {
     return this.http.post<Asignaciones>(this.apiURLAsignaciones, asignacion);
   }
 
-  // === ACTUALIZAR ASIGNACIÓN ===
-  actualizarAsignacion(id: number, asignacion: Asignaciones): Observable<Asignaciones> {
-    return this.http.put<Asignaciones>(`${this.apiURLAsignaciones}/${id}`, asignacion);
-  }
+  actualizarAsignacion(id: number, cuerpo: Partial<Asignaciones>): Observable<Asignaciones> {
+  return this.http.put<Asignaciones>(`${this.apiURLAsignaciones}/${id}`, cuerpo);
+}
+
 
   // === ELIMINAR ASIGNACIÓN ===
   eliminarAsignacion(id: number): Observable<void> {

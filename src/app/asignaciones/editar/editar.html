@@ -1,9 +1,24 @@
 <div class="container mt-5">
-  <h2 class="text-center mb-4 fw-bold text-dark">Editar Asignación</h2>
+  <h2 class="text-center mb-4 fw-bold text-dark">
+    <i class="bi bi-pencil-square"></i> Editar Asignación
+  </h2>
 
-  <div class="card shadow-lg p-4 mx-auto" style="max-width: 600px;">
-    <form *ngIf="asignacion" (ngSubmit)="guardarCambios()" #form="ngForm">
-      
+  <div class="card shadow-lg p-4 mx-auto border-0" style="max-width: 600px;">
+
+    <!-- Mensaje de error -->
+    <div *ngIf="error" class="alert alert-danger text-center py-2">
+      {{ error }}
+    </div>
+
+    <!-- Cargando -->
+    <div *ngIf="cargando" class="text-center py-4">
+      <div class="spinner-border text-primary" role="status"></div>
+      <p class="mt-2 text-muted">Cargando datos...</p>
+    </div>
+
+    <!-- Formulario -->
+    <form *ngIf="!cargando" (ngSubmit)="guardarCambios()">
+
       <!-- Voluntario -->
       <div class="mb-3">
         <label for="voluntario_id" class="form-label fw-semibold">Voluntario</label>
@@ -14,9 +29,8 @@
           name="voluntario_id"
           required
         >
-          <option *ngFor="let v of voluntarios" [value]="v.id">
-            {{ v.nombre }}
-          </option>
+          <option value="" disabled selected>Seleccione un voluntario</option>
+          <option *ngFor="let v of voluntarios" [value]="v.id">{{ v.nombre }}</option>
         </select>
       </div>
 
@@ -30,9 +44,8 @@
           name="area_id"
           required
         >
-          <option *ngFor="let a of areas" [value]="a.id">
-            {{ a.nombre }}
-          </option>
+          <option value="" disabled selected>Seleccione un área</option>
+          <option *ngFor="let a of areas" [value]="a.id">{{ a.nombre }}</option>
         </select>
       </div>
 
@@ -46,36 +59,19 @@
           name="estado"
           required
         >
-          <option [ngValue]="true">Activo</option>
-          <option [ngValue]="false">Inactivo</option>
+          <option value="" disabled selected>Seleccione un estado</option>
+          <option *ngFor="let e of estados" [value]="e">{{ e }}</option>
         </select>
       </div>
 
       <!-- Botones -->
       <div class="d-flex justify-content-center gap-3 mt-4">
-        <button type="submit" class="btn btn-success px-4" [disabled]="form.invalid">
-          Guardar Cambios
+        <button type="submit" class="btn btn-success px-4">
+          <i class="bi bi-save"></i> Guardar Cambios
         </button>
         <button type="button" class="btn btn-secondary px-4" (click)="cancelar()">
-          Cancelar
+          <i class="bi bi-x-circle"></i> Cancelar
         </button>
-      </div>
-
-      <!-- Mensajes -->
-      <div
-        *ngIf="mensaje"
-        class="alert alert-success mt-4 text-center fade show"
-        role="alert"
-      >
-        {{ mensaje }}
-      </div>
-
-      <div
-        *ngIf="error"
-        class="alert alert-danger mt-4 text-center fade show"
-        role="alert"
-      >
-        {{ error }}
       </div>
     </form>
   </div>
