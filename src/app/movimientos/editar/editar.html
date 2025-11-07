@@ -1,1 +1,95 @@
-<p>editar works!</p>
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold text-dark">Editar Movimiento</h2>
+
+  <div class="card shadow-lg p-4 mx-auto" style="max-width: 600px;">
+    <form #form="ngForm" (ngSubmit)="guardarCambios()">
+
+      <!-- Voluntario -->
+      <div class="mb-3">
+        <label for="voluntario_id" class="form-label fw-semibold">Voluntario</label>
+        <select
+          id="voluntario_id"
+          class="form-select"
+          [(ngModel)]="movimiento.voluntario_id"
+          name="voluntario_id"
+          required
+        >
+          <option value="" disabled>Seleccione un voluntario</option>
+          <option *ngFor="let v of voluntarios" [value]="v.id">
+            {{ v.nombre }} {{ v.apellido_pat }} {{ v.apellido_mat }}
+          </option>
+        </select>
+        <div *ngIf="!movimiento.voluntario_id && form.submitted" class="text-danger small">
+          Seleccione un voluntario válido.
+        </div>
+      </div>
+
+      <!-- Tipo -->
+      <div class="mb-3">
+        <label for="tipo" class="form-label fw-semibold">Tipo</label>
+        <select
+          id="tipo"
+          class="form-select"
+          [(ngModel)]="movimiento.tipo"
+          name="tipo"
+          required
+        >
+          <option value="" disabled>Seleccione un tipo</option>
+          <option value="Entrada">Entrada</option>
+          <option value="Salida">Salida</option>
+        </select>
+        <div *ngIf="!movimiento.tipo && form.submitted" class="text-danger small">
+          Seleccione un tipo válido.
+        </div>
+      </div>
+
+      <!-- Cantidad -->
+      <div class="mb-3">
+        <label for="cantidad" class="form-label fw-semibold">Cantidad</label>
+        <input
+          id="cantidad"
+          type="number"
+          class="form-control"
+          [(ngModel)]="movimiento.cantidad"
+          name="cantidad"
+          min="1"
+          required
+        />
+        <div *ngIf="!movimiento.cantidad && form.submitted" class="text-danger small">
+          Ingrese una cantidad válida.
+        </div>
+      </div>
+
+      <!-- Descripción -->
+      <div class="mb-3">
+        <label for="descripcion" class="form-label fw-semibold">Descripción</label>
+        <textarea
+          id="descripcion"
+          class="form-control"
+          [(ngModel)]="movimiento.descripcion"
+          name="descripcion"
+          rows="3"
+          required
+        ></textarea>
+        <div *ngIf="!movimiento.descripcion && form.submitted" class="text-danger small">
+          La descripción es obligatoria.
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button type="submit" class="btn btn-success px-4">
+          Guardar Cambios
+        </button>
+        <button type="button" class="btn btn-secondary px-4" (click)="cancelar()">
+          Cancelar
+        </button>
+      </div>
+
+      <!-- Error -->
+      <div *ngIf="error" class="alert alert-danger mt-3 text-center">
+        {{ error }}
+      </div>
+    </form>
+  </div>
+</div>

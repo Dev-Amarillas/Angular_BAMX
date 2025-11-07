@@ -3,6 +3,6 @@ export interface Movimientos {
   voluntario_id: number;
   tipo?: string;
   cantidad: number;
-  fecha?: Date | string;
+  fecha?: string | Date;
   descripcion: string;
 }

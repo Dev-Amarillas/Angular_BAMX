@@ -17,15 +17,18 @@ import { EliminarAreaComponent } from './areas/eliminar/eliminar';
 // === ASIGNACIONES ===
 import { EditarAsignacionComponent } from './asignaciones/editar/editar';
 import { EliminarAsignacionComponent } from './asignaciones/eliminar/eliminar';
+// === MOVIMIENTOS ===
+import { EditarMovimientoComponent } from './movimientos/editar/editar';
+import { EliminarMovimientoComponent } from './movimientos/eliminar/eliminar';
 
 export const appRoutes: Routes = [
   // Página principal
   { path: '', component: Home },
 
   // --- ADMINISTRADORES ---
-  { path: 'administradores', component: Administradores },               // GET (lista)
-  { path: 'administradores/editar/:id', component: EditarAdministradorComponent },  // PUT (editar)
-  { path: 'administradores/eliminar/:id', component: EliminarAdminComponent },      // DELETE (eliminar)
+  { path: 'administradores', component: Administradores },             
+  { path: 'administradores/editar/:id', component: EditarAdministradorComponent },  
+  { path: 'administradores/eliminar/:id', component: EliminarAdminComponent },      
 
   // --- VOLUNTARIOS ---
   { path: 'voluntarios', component: Voluntarios },
@@ -37,6 +40,8 @@ export const appRoutes: Routes = [
 
   // --- MOVIMIENTOS ---
   { path: 'movimientos', component: Movimientos },
+ { path: 'movimientos/editar/:id', component: EditarMovimientoComponent },
+  { path: 'movimientos/eliminar/:id', component: EliminarMovimientoComponent },
   
   // --- ASIGNACIONES ---
   { path: 'asignaciones', component: Asignaciones },

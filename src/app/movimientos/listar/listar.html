@@ -1,40 +1,79 @@
 <div class="container mt-5">
-  <h2 class="text-center mb-4">Listado de Movimientos</h2>
+  <h2 class="text-center mb-4 fw-bold text-dark"> Listado de Movimientos</h2>
 
-  <!-- Tabla de movimientos -->
-  <div class="table-responsive">
-    <table class="table table-striped table-hover align-middle">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Voluntario_ID</th>
-          <th>Tipo</th>
-          <th>Cantidad_KG</th>
-          <th>Fecha del movimiento</th>
-          <th>Descripción</th>
-          <th class="text-center">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let mov of movimientos">
-          <td>{{ mov.id }}</td>
-          <td>{{ mov.voluntario_id }}</td>
-          <td>{{ mov.tipo }}</td>
-          <td>{{ mov.cantidad }}</td>
-          <td>{{ mov.fecha }}</td>
-          <td>{{ mov.descripcion }}</td>
-          <td class="text-center">
-            <button class="btn btn-outline-warning btn-sm me-2">
-              Editar
-            </button>
-            <button class="btn btn-outline-danger btn-sm">
-              Eliminar
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card shadow-lg p-3">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped align-middle">
+        <thead class="table-dark text-center">
+          <tr>
+            <th>ID</th>
+            <th>Voluntario ID</th>
+            <th>Tipo</th>
+            <th>Cantidad (KG)</th>
+            <th>Fecha del Movimiento</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let mov of movimientos">
+            <td class="text-center">{{ mov.id }}</td>
+            <td class="text-center">{{ mov.voluntario_id }}</td>
+            <td class="text-center">
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-primary': mov.tipo?.toLowerCase() === 'entrada',
+                  'bg-danger': mov.tipo?.toLowerCase() === 'salida',
+                  'bg-secondary': !mov.tipo
+                }"
+              >
+                {{ mov.tipo || 'Sin tipo' }}
+              </span>
+            </td>
+            <td class="text-center fw-semibold">{{ mov.cantidad }} kg</td>
+            <td class="text-center">
+              {{ mov.fecha ? (mov.fecha | date: 'short') : 'Pendiente' }}
+            </td>
+            <td>{{ mov.descripcion || 'Sin descripción' }}</td>
+            <td class="text-center">
+              <a
+                [routerLink]="['/movimientos/editar', mov.id]"
+                class="btn btn-sm btn-success me-2"
+                title="Editar movimiento"
+              >
+                <i class="bi bi-pencil-square"></i> Editar
+              </a>
+              <a
+                [routerLink]="['/movimientos/eliminar', mov.id]"
+                class="btn btn-sm btn-danger"
+                title="Eliminar movimiento"
+              >
+                <i class="bi bi-trash3"></i> Eliminar
+              </a>
+            </td>
+          </tr>
+
+          <tr *ngIf="movimientos.length === 0">
+            <td colspan="7" class="text-center text-muted py-4">
+              No hay movimientos registrados todavía.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-end mt-3">
+      <a routerLink="/movimientos/crear" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Nuevo Movimiento
+      </a>
+    </div>
   </div>
 </div>
 
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

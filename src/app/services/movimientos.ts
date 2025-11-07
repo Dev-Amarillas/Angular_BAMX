@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Movimientos } from '../interfaces/movimientos';
 
 @Injectable({
@@ -11,13 +11,32 @@ export class MovimientosService {
 
   constructor(private http: HttpClient) {}
 
-  // Obtener todos los movimientos
   obtenerMovimientos(): Observable<{ datos: Movimientos[] }> {
-    return this.http.get<{ datos: Movimientos[] }>(this.apiURLMovimientos);
+    return this.http.get<{ datos: Movimientos[] }>(this.apiURLMovimientos)
+      .pipe(catchError(this.handleError));
   }
 
-  // Crear nuevo movimiento
+  obtenerMovimientoPorId(id: number): Observable<any> {
+  return this.http.get<any>(`${this.apiURLMovimientos}/${id}`);
+}
+
+
   crearMovimiento(movimiento: Partial<Movimientos>): Observable<Movimientos> {
-    return this.http.post<Movimientos>(this.apiURLMovimientos, movimiento);
+    return this.http.post<Movimientos>(this.apiURLMovimientos, movimiento)
+      .pipe(catchError(this.handleError));
+  }
+
+  actualizarMovimiento(id: number, movimiento: Partial<Movimientos>): Observable<Movimientos> {
+    return this.http.put<Movimientos>(`${this.apiURLMovimientos}/${id}`, movimiento)
+      .pipe(catchError(this.handleError));
+  }
+
+  eliminarMovimiento(id: number): Observable<any> {
+    return this.http.delete(`${this.apiURLMovimientos}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: any) {
+    return throwError(() => new Error('Error en el servicio de movimientos.'));
   }
 }

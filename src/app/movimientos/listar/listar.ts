@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MovimientosService } from '../../services/movimientos';
 import { Movimientos } from '../../interfaces/movimientos';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listar',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './listar.html',
   styleUrls: ['./listar.css'],
   standalone: true
