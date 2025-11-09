@@ -43,15 +43,16 @@
 <div class="mb-3">
   <label for="estado" class="form-label">Estado</label>
   <select
-    id="estado"
-    name="estado"
-    class="form-select"
-    [(ngModel)]="area.estado"
-    required
-  >
-    <option [ngValue]="true">Activo</option>
-    <option [ngValue]="false">Inactivo</option>
-  </select>
+  id="estado"
+  name="estado"
+  class="form-select"
+  [(ngModel)]="area.estado"
+  required
+>
+  <option [ngValue]="1">Activo</option>
+  <option [ngValue]="0">Inactivo</option>
+</select>
+
 </div>
 
     <!-- Botón -->

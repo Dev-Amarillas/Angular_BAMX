@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Voluntarios } from '../interfaces/voluntarios';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,11 @@ export class VoluntariosService {
   }
 
   // Obtener un voluntario por ID (opcional)
-  obtenerVoluntarioPorId(id: number): Observable<Voluntarios> {
-    return this.http.get<Voluntarios>(`${this.apiURLVoluntarios}/${id}`);
-  }
+  obtenerVoluntarioPorId(id: number) {
+  return this.http.get<any>(`${this.apiURLVoluntarios}/${id}`).pipe(
+    map(res => res.datos)
+  );
+}
 
   // Actualizar voluntario (opcional)
   actualizarVoluntario(id: number, formData: FormData): Observable<Voluntarios> {
@@ -36,3 +39,6 @@ export class VoluntariosService {
     return this.http.delete<void>(`${this.apiURLVoluntarios}/${id}`);
   }
 }
+
+
+

@@ -1,1 +1,32 @@
-<p>eliminar works!</p>
+<div class="container mt-4" *ngIf="!cargando; else cargandoTpl">
+  <div class="card shadow-lg p-4 text-center">
+    <h2 class="mb-4">Eliminar Voluntario</h2>
+
+    <div *ngIf="voluntario; else errorTpl">
+      <p><strong>ID:</strong> {{ voluntario.id }}</p>
+      <p><strong>Nombre:</strong> {{ voluntario.nombre }} {{ voluntario.apellido_pat }} {{ voluntario.apellido_mat }}</p>
+      <p><strong>Teléfono:</strong> {{ voluntario.telefono }}</p>
+      <p><strong>Dirección:</strong> {{ voluntario.direccion }}</p>
+      <p><strong>Estado:</strong> {{ voluntario.estado ? 'Activo' : 'Inactivo' }}</p>
+      <img *ngIf="voluntario.foto" [src]="voluntario.foto" alt="Foto del voluntario" class="img-thumbnail mt-3" width="150">
+
+      <div class="mt-4">
+        <button class="btn btn-danger px-4" (click)="eliminarVoluntario()">Eliminar</button>
+        <a routerLink="/voluntarios" class="btn btn-secondary ms-2">Cancelar</a>
+      </div>
+    </div>
+
+    <ng-template #errorTpl>
+      <p class="text-danger">No se encontró información del voluntario.</p>
+    </ng-template>
+
+    <p class="text-success mt-3">{{ mensaje }}</p>
+  </div>
+</div>
+
+<ng-template #cargandoTpl>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-danger" role="status"></div>
+    <p>Cargando información...</p>
+  </div>
+</ng-template>

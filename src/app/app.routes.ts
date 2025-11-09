@@ -8,6 +8,7 @@ import { Areas } from './areas/areas';
 import { Movimientos } from './movimientos/movimientos';
 import { Asignaciones } from './asignaciones/asignaciones';
 
+
 // === ADMINISTRADORES ===
 import { EditarAdministradorComponent } from './administradores/editar/editar';
 import { EliminarAdminComponent } from './administradores/eliminar/eliminar';
@@ -20,9 +21,11 @@ import { EliminarAsignacionComponent } from './asignaciones/eliminar/eliminar';
 // === MOVIMIENTOS ===
 import { EditarMovimientoComponent } from './movimientos/editar/editar';
 import { EliminarMovimientoComponent } from './movimientos/eliminar/eliminar';
+// === VOLUNTARIOS ===
+import { EditarVoluntarioComponent } from './voluntarios/editar/editar';
+import { EliminarVoluntarioComponent } from './voluntarios/eliminar/eliminar';
 
 export const appRoutes: Routes = [
-  // Página principal
   { path: '', component: Home },
 
   // --- ADMINISTRADORES ---
@@ -32,6 +35,8 @@ export const appRoutes: Routes = [
 
   // --- VOLUNTARIOS ---
   { path: 'voluntarios', component: Voluntarios },
+  { path: 'voluntarios/editar/:id', component: EditarVoluntarioComponent },
+  { path: 'voluntarios/eliminar/:id', component: EliminarVoluntarioComponent },
 
   // --- ÁREAS ---
   { path: 'areas', component: Areas },

@@ -1,8 +1,8 @@
 export interface Areas {
     
-  id: number;
+  id?: number;
   nombre: string;
   descripcion: string;
-  estado: boolean;
+  estado: number;
 }
 

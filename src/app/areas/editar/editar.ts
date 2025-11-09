@@ -15,11 +15,10 @@ import { Areas } from '../../interfaces/areas';
 export class Editar implements OnInit {
 
   area: Areas = {
-    id: 0,
     nombre: '',
     descripcion: '',
-    estado: true
-  };
+    estado: 1
+  } as Areas;
 
   error: string = '';
 
