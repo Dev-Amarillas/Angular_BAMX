@@ -22,7 +22,7 @@
           <td>{{ admin.correo }}</td>
           <td>{{ admin.fecha_creacion }}</td>
           <td>
-            <img *ngIf="admin.imagen" [src]="'http://localhost:3000/uploads/' + admin.imagen" 
+            <img *ngIf="admin.imagen" [src]="'http://localhost:3000/uploads/administradores/' + admin.imagen" 
                  alt="{{ admin.nombre }}" class="img-foto">
           </td>
           <td class="text-center">

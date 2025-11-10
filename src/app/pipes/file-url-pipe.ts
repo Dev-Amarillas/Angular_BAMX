@@ -9,3 +9,6 @@ export class FileUrlPipe implements PipeTransform {
     return file ? URL.createObjectURL(file) : '';
   }
 }
+
+//Aqui utilice pipe para que se previsualizara la imagen al momento que la cargan en el front de momento solo 
+// a los voluntarios
